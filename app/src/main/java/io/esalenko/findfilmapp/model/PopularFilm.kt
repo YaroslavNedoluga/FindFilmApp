@@ -4,7 +4,7 @@ package io.esalenko.findfilmapp.model
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-class PopularFilms {
+class PopularFilm {
 
     @SerializedName("page")
     @Expose
