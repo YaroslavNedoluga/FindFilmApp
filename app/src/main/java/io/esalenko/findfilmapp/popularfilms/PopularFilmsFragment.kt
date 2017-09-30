@@ -1,49 +1,47 @@
 package io.esalenko.findfilmapp.popularfilms
 
 
+import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import butterknife.BindView
 import io.esalenko.findfilmapp.R
 import io.esalenko.findfilmapp.common.BaseFragment
-import io.esalenko.findfilmapp.model.Film
-import kotlinx.android.synthetic.main.fragment_popular_films.*
-import javax.inject.Inject
 
 
 /**
  * A simple [Fragment] subclass.
  */
-class PopularFilmsFragment : BaseFragment(), PopularFilmView {
+class PopularFilmsFragment : BaseFragment() {
 
-    @Inject
-    lateinit var presenter: PopularIPresenter
+    @BindView(R.id.rv_popular_films_list)
+    lateinit var recyclerView: RecyclerView
 
-    @Inject
-    lateinit var adapter: PopularFilmsAdapter
+    private lateinit var viewModel: LiveDataPopularFilmViewModel
 
-    lateinit var layout_manager: RecyclerView.LayoutManager
+    private lateinit var adapter: PopularFilmAdapter
 
     override fun getLayoutRes(): Int = R.layout.fragment_popular_films
 
-    override fun onStart() {
-        super.onStart()
-        presenter.load()
-    }
-
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        layout_manager = LinearLayoutManager(context)
-        popular_films_list.layoutManager = this.layout_manager
-        popular_films_list.adapter = this.adapter
-
+        viewModel = ViewModelProviders.of(this).get(LiveDataPopularFilmViewModel::class.java)
+        subscribePopularFilms()
+        adapter = PopularFilmAdapter()
+        val layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(context)
+        recyclerView.layoutManager = layoutManager
+        recyclerView.adapter = adapter
     }
 
-    override fun showPopularFilms(films: List<Film>?) {
-        adapter.films = films!!
+    private fun subscribePopularFilms() {
+        viewModel.data
+                .observe(this, Observer { popularFilmsList ->
+                    adapter.list = popularFilmsList
+                })
     }
+
 }
