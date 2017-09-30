@@ -1,21 +1,13 @@
 package io.esalenko.findfilmapp.dagger
 
-import dagger.Binds
+import android.arch.lifecycle.ViewModel
+import android.arch.lifecycle.ViewModelProviders
+import android.support.v4.app.Fragment
 import dagger.Module
-import io.esalenko.findfilmapp.IPresenter
-import io.esalenko.findfilmapp.popularfilms.PopularFilmView
-import io.esalenko.findfilmapp.popularfilms.PopularFilmsFragment
-import io.esalenko.findfilmapp.popularfilms.PopularIPresenter
-import javax.inject.Singleton
+import dagger.Provides
 
 
 @Module
-interface PopularFragmentModule {
-
-    @Binds
-    fun popularPresenter(popularPresenter: PopularIPresenter) : IPresenter
-
-    @Binds
-    fun popularFilmView(fragment : PopularFilmsFragment) : PopularFilmView
+class PopularFragmentModule {
 
 }
