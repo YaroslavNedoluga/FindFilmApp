@@ -5,7 +5,7 @@
     tools:context="io.esalenko.findfilmapp.popularfilms.PopularFilmsFragment">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/popular_films_list"
+        android:id="@+id/rv_popular_films_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
