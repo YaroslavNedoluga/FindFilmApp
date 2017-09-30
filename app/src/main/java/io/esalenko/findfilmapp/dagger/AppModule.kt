@@ -4,15 +4,10 @@ import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
 import io.esalenko.findfilmapp.MainActivity
-import io.esalenko.findfilmapp.common.BaseActivity
 import io.esalenko.findfilmapp.dagger.scope.ActivityScope
 
-@Module(includes = arrayOf(AndroidSupportInjectionModule::class))
+@Module
 interface AppModule {
-
-    @ActivityScope
-    @ContributesAndroidInjector(modules = arrayOf(BaseActivityModule::class))
-    fun baseActivity() : BaseActivity
 
     @ActivityScope
     @ContributesAndroidInjector(modules = arrayOf(MainActivityModule::class))
