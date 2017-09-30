@@ -4,17 +4,17 @@ import android.content.Context
 import dagger.Module
 import dagger.Provides
 import io.esalenko.findfilmapp.R
+import io.esalenko.findfilmapp.dagger.scope.ApplicationScope
 import io.esalenko.findfilmapp.service.RestService
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import javax.inject.Singleton
 
 
 @Module
-class RestModule {
+abstract class RestModule {
 
-    @Singleton
+    @ApplicationScope
     @Provides
     fun retrofit(context: Context): Retrofit {
         return Retrofit.Builder()
@@ -24,6 +24,7 @@ class RestModule {
                 .build()
     }
 
+    @ApplicationScope
     @Provides
     fun restService(retrofit: Retrofit): RestService = retrofit.create(RestService::class.java)
 
