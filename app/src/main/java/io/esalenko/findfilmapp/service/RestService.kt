@@ -1,6 +1,6 @@
 package io.esalenko.findfilmapp.service
 
-import io.esalenko.findfilmapp.model.PopularFilms
+import io.esalenko.findfilmapp.model.PopularFilm
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -12,6 +12,6 @@ interface RestService {
     fun getPopularFilms(@Query("api_key") key : String,
                         @Query("language") language : String,
                         @Query("page") page : Int,
-                        @Query("region") region : String) : Observable<PopularFilms>
+                        @Query("region") region: String): Observable<PopularFilm>
 
 }
