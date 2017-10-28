@@ -9,9 +9,9 @@ import retrofit2.http.Query
 interface RestService {
 
     @GET("movie/popular")
-    fun getPopularFilms(@Query("api_key") key : String,
-                        @Query("language") language : String,
-                        @Query("page") page : Int,
+    fun getPopularFilms(@Query("api_key") key: String,
+                        @Query("language") language: String,
+                        @Query("page") page: Int,
                         @Query("region") region: String): Observable<PopularFilm>
 
 }

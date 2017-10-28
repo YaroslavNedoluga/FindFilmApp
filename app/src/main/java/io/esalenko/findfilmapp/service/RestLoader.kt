@@ -1,12 +1,16 @@
 package io.esalenko.findfilmapp.service
 
-import io.esalenko.findfilmapp.hepler.ApiHelper
+import android.content.Context
+import io.esalenko.findfilmapp.helper.ApiHelper
+import io.esalenko.findfilmapp.helper.RetrofitHelper
 import io.esalenko.findfilmapp.model.Film
 import io.reactivex.Observable
 
 
-class RestLoader(private val restService: RestService,
-                 private var apiHelper: ApiHelper) {
+class RestLoader(context: Context) {
+
+    private val restService: RestService = RetrofitHelper().getRetrofitInstance(context)!!
+    private val apiHelper: ApiHelper = ApiHelper(context)
 
     fun getPopularFilms(page: Int): Observable<List<Film>> {
         return restService
