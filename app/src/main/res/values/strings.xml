@@ -10,6 +10,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="test_film_description">Minions Stuart, Kevin and Bob are recruited by Scarlet Overkill, a super-villain who, alongside her inventor husband Herb, hatches a plot to take over the world.</string>
     <string name="test_film_title">Minions</string>
+    <string name="error_overview">Sorry. Overview is unavailable for this movie</string>
+    <string name="error_title">Sorry. Title is unavailable for this movie</string>
 
 
 </resources>
