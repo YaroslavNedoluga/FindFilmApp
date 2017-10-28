@@ -23,5 +23,4 @@ class PopularFilm {
     var results: List<Film>? = null
 
 
-
 }
