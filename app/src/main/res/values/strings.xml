@@ -1,17 +1,17 @@
 <resources>
 
-    <string name="api_key">e155ee391fe67e4bced2832115371e0c</string>
     <string name="base_url">https://api.themoviedb.org/3/</string>
     <string name="base_url_for_img">https://image.tmdb.org/t/p/w342</string>
 
-    <string name="app_name">FindFilmApp</string>
+    <string name="app_name">Project Achilles</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="test_film_description">Minions Stuart, Kevin and Bob are recruited by Scarlet Overkill, a super-villain who, alongside her inventor husband Herb, hatches a plot to take over the world.</string>
     <string name="test_film_title">Minions</string>
     <string name="error_overview">Sorry. Overview is unavailable for this movie</string>
     <string name="error_title">Sorry. Title is unavailable for this movie</string>
+    <string name="working_app_name">Project Achilles</string>
+    <string name="average_vote">Average rating : %2f</string>
+    <string name="vote_count">Voted : %d</string>
 
 
 </resources>
