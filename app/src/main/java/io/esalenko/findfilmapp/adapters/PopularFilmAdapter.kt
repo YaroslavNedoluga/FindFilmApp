@@ -13,15 +13,15 @@ import io.esalenko.findfilmapp.R
 import io.esalenko.findfilmapp.model.Film
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
+import java.util.*
 
 
 class PopularFilmAdapter(private val callback : PopularFilmOnCLickListener) : RecyclerView.Adapter<PopularFilmAdapter.PopularFilmViewHolder>() {
 
-    private var list: List<Film>? = null
+    private var list: ArrayList<Film>? = ArrayList()
 
     fun setList(list: List<Film>?) {
-        this.list = list
-        notifyItemRangeInserted(0, list!!.size)
+        this.list?.addAll(list!!)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): PopularFilmViewHolder {
@@ -36,7 +36,7 @@ class PopularFilmAdapter(private val callback : PopularFilmOnCLickListener) : Re
         holder?.bindView(film)
     }
 
-    class PopularFilmViewHolder(itemView: View?, val callback: PopularFilmOnCLickListener) :
+    class PopularFilmViewHolder(itemView: View?, private val callback: PopularFilmOnCLickListener) :
             RecyclerView.ViewHolder(itemView),
             AnkoLogger,
             View.OnClickListener {
@@ -53,7 +53,7 @@ class PopularFilmAdapter(private val callback : PopularFilmOnCLickListener) : Re
         @BindView(R.id.film_release_year)
         lateinit var releaseYear: TextView
 
-        lateinit var film : Film
+        private lateinit var film: Film
 
         init {
             ButterKnife.bind(this, itemView!!)
@@ -62,9 +62,10 @@ class PopularFilmAdapter(private val callback : PopularFilmOnCLickListener) : Re
 
         fun bindView(film: Film) {
             this.film = film
+
             val baseImageUrl = itemView.context.resources.getString(R.string.base_url_for_img)
             val url = baseImageUrl + film.backdropPath
-//            info { url }
+
             if (url != null) {
                 Glide.with(itemView)
                         .load(url)
@@ -76,7 +77,6 @@ class PopularFilmAdapter(private val callback : PopularFilmOnCLickListener) : Re
 
             overview.text = film.overview ?: itemView.context.getString(R.string.error_overview)
 
-//            info { film.releaseDate }
             val yearLength = 4
             releaseYear.text = film.releaseDate?.substring(0, yearLength) ?: "- - - -"
         }
