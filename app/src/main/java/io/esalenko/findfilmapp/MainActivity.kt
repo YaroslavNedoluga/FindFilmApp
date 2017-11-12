@@ -2,7 +2,6 @@ package io.esalenko.findfilmapp
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
 import io.esalenko.findfilmapp.common.BaseActivity
 import io.esalenko.findfilmapp.fragments.DetailFilmFragment
 import io.esalenko.findfilmapp.fragments.PopularFilmsFragment
@@ -27,17 +26,11 @@ class MainActivity : BaseActivity(),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val fm: FragmentManager = supportFragmentManager
-        var fragment: Fragment? = fm.findFragmentById(R.id.fragment_container)
-
-        if (fragment == null) {
-            state = State.POPULAR_MOVIES_LIST
-            fragment = PopularFilmsFragment()
-            fm.beginTransaction()
-                    .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
-                    .add(R.id.fragment_container, fragment)
-                    .commitNowAllowingStateLoss()
-        }
+        state = State.POPULAR_MOVIES_LIST
+        supportFragmentManager.beginTransaction()
+                .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
+                .add(R.id.fragment_container, PopularFilmsFragment())
+                .commitNowAllowingStateLoss()
     }
 
     override fun showFilmDetails(film: Film) {
@@ -58,21 +51,20 @@ class MainActivity : BaseActivity(),
         bundle.putParcelable(FILM, film)
         detailFragment.arguments = bundle
 
-        supportFragmentManager
-                .beginTransaction()
-                .setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right)
-                .replace(R.id.fragment_container, detailFragment)
-                .commitNowAllowingStateLoss()
+        replaceFragment(detailFragment)
     }
 
     private fun showPopularMoviesScreen() {
         state = State.POPULAR_MOVIES_LIST
+        replaceFragment(PopularFilmsFragment())
+    }
+
+    private fun replaceFragment(fragment: Fragment) {
         supportFragmentManager
                 .beginTransaction()
                 .setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right)
-                .replace(R.id.fragment_container, PopularFilmsFragment())
+                .replace(R.id.fragment_container, fragment)
                 .commitNowAllowingStateLoss()
     }
-
 
 }
