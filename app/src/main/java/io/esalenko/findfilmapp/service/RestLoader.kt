@@ -1,22 +1,21 @@
 package io.esalenko.findfilmapp.service
 
-import android.content.Context
 import io.esalenko.findfilmapp.helper.ApiHelper
 import io.esalenko.findfilmapp.helper.RetrofitHelper
 import io.esalenko.findfilmapp.model.Film
 import io.reactivex.Observable
 
 
-class RestLoader(context: Context) {
+class RestLoader {
 
-    private val restService: RestService = RetrofitHelper().getRetrofitInstance(context)!!
-    private val apiHelper: ApiHelper = ApiHelper(context)
+    private val restService: RestService = RetrofitHelper().getRetrofitInstance()!!
+    private val apiHelper: ApiHelper = ApiHelper()
 
-    fun getPopularFilms(page: Int): Observable<List<Film>> {
+    fun getPopularFilms(page: Int, locale: String): Observable<List<Film>> {
         return restService
                 .getPopularFilms(
                         apiHelper.getApiKey(),
-                        apiHelper.getLocale(),
+                        locale,
                         page,
                         apiHelper.region)
                 .map { popularFilms -> popularFilms.results!! }
