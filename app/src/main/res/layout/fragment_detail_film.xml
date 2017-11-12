@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.DetailFilmFragment">
+    tools:context=".fragments.DetailFilmFragment"
+    tools:layout_editor_absoluteY="81dp">
 
     <!--BACKDROP-->
     <ImageView
@@ -14,43 +15,78 @@
         android:scaleType="centerCrop"
         tools:src="@drawable/test_backdrop" />
 
+
     <!--TRANSPARENT BACKGROUND-->
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="#99000000" />
 
+
     <!--TITLE-->
     <TextView
         android:id="@+id/tv_fragment_detail_film_title"
-        style="@style/CVTitle"
+        style="@style/TextTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:gravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         tools:text="BLADERUNNER 2049" />
 
     <!--POSTER-->
 
-    <!--OVERVIEW-->
+    <!--elease Date-->
     <TextView
-        android:id="@+id/tv_fragment_detail_film_overview"
-        style="@style/CVBody"
-        android:layout_width="match_parent"
+        android:id="@+id/tv_fragment_detail_film_release_date"
+        style="@style/TextMedium"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/tv_fragment_detail_film_average_vote"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_fragment_detail_film_title"
+        tools:text="2017" />
+
+    <!--VOTE AVERAGE-->
+    <TextView
+        android:id="@+id/tv_fragment_detail_film_average_vote"
+        style="@style/TextSmall"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/average_vote"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_fragment_detail_film_vote_count" />
+
+    <!--VOTE COUNT-->
+    <TextView
+        android:id="@+id/tv_fragment_detail_film_vote_count"
+        style="@style/TextSmall"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:gravity="right"
+        android:text="@string/vote_count"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.552"
+        app:layout_constraintStart_toEndOf="@+id/tv_fragment_detail_film_average_vote"
+        tools:layout_editor_absoluteY="226dp" />
+
+    <!--OVERVIEW-->
+    <TextView
+        android:id="@+id/tv_fragment_detail_film_overview"
+        style="@style/TextDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_fragment_detail_film_vote_count"
         tools:text="@string/test_film_description" />
+
 
 </android.support.constraint.ConstraintLayout>
