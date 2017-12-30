@@ -1,9 +1,10 @@
-package io.esalenko.findfilmapp
+package io.esalenko.findfilmapp.activity
 
 import android.os.Bundle
 import android.os.Handler
+import io.esalenko.findfilmapp.R
 import io.esalenko.findfilmapp.common.BaseActivity
-import org.jetbrains.anko.intentFor
+import org.jetbrains.anko.startActivity
 
 class SplashActivity : BaseActivity() {
     override fun getLayoutRes(): Int = R.layout.activity_splash
@@ -19,7 +20,7 @@ class SplashActivity : BaseActivity() {
     }
 
     private fun startMainActivity() {
-        startActivity(intentFor<MainActivity>())
+        startActivity<MainActivity>()
         finish()
     }
 }
