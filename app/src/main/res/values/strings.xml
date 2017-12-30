@@ -10,8 +10,6 @@
     <string name="error_overview">Sorry. Overview is unavailable for this movie</string>
     <string name="error_title">Sorry. Title is unavailable for this movie</string>
     <string name="working_app_name">Project Achilles</string>
-    <string name="average_vote">Average rating : %2f</string>
-    <string name="vote_count">Voted : %d</string>
 
 
 </resources>
