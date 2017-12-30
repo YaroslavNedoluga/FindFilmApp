@@ -17,20 +17,21 @@ abstract class BaseFragment : Fragment() {
     private lateinit var unbinder: Unbinder
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view: View = inflater.inflate(getLayoutRes(), container, false)!!
+        val view: View = inflater.inflate(layoutRes, container, false)!!
         unbinder = ButterKnife.bind(this, view)
         return view
     }
 
-    @LayoutRes
-    protected abstract fun getLayoutRes(): Int
+    @get:LayoutRes
+    protected abstract val layoutRes: Int
 
     override fun onDestroyView() {
         super.onDestroyView()
         unbinder.unbind()
     }
 
-    protected fun getApp(): App = activity?.application as App
+    protected val app: App
+        get() = activity?.application as App
 
     protected fun Fragment.toastError(message: CharSequence, duration: Int = Toast.LENGTH_LONG) {
         Toasty.error(context!!, message, duration, true).show()
