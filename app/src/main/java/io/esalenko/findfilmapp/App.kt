@@ -28,7 +28,10 @@ class App : MultiDexApplication(), AnkoLogger {
             info { locale.toString() }
         }
 
-        return locale.toString()
+        // FIXME :: need debug on different locales
+        val res = locale.toString().substring(0, 2)
+        info { res }
+        return res
     }
 
 }
