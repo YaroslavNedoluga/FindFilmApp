@@ -1,7 +1,6 @@
-package io.esalenko.findfilmapp.viewmodel
+package io.esalenko.findfilmapp.livedata
 
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
+import android.arch.lifecycle.LiveData
 import io.esalenko.findfilmapp.model.Film
 import io.esalenko.findfilmapp.service.RestLoader
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -9,20 +8,18 @@ import io.reactivex.schedulers.Schedulers
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 
-class PopularFilmsViewModel : ViewModel(), AnkoLogger {
 
-    private val liveData: MutableLiveData<List<Film>> = MutableLiveData()
+class ListFilmLiveData : LiveData<List<Film>>(), AnkoLogger {
 
     private val restLoader: RestLoader = RestLoader()
 
-
-    fun loadPopularFilms(page: Int, locale: String): MutableLiveData<List<Film>> {
+    fun getFilmsList(page: Int = 1, locale: String) {
         restLoader.getPopularFilms(page, locale)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         { films: List<Film> ->
-                            liveData.value = films
+                            value = films
                             for (film in films) {
                                 info { "$film" }
                             }
@@ -33,9 +30,6 @@ class PopularFilmsViewModel : ViewModel(), AnkoLogger {
                         {
                             info { "onComplete() = getPopularFilms()" }
                         })
-
-        return liveData
     }
-
 
 }
