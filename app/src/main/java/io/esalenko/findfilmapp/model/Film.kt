@@ -1,34 +1,10 @@
 package io.esalenko.findfilmapp.model
 
-import android.os.Parcel
-import android.os.Parcelable
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 
-class Film() : Parcelable {
-    override fun writeToParcel(dest: Parcel?, flags: Int) {
-        dest?.writeArray(
-                arrayOf(
-                        voteCount,
-                        id,
-                        video,
-                        voteAverage,
-                        title,
-                        popularity,
-                        posterPath,
-                        originalLanguage,
-                        originalTitle,
-                        overview,
-                        genreIds,
-                        backdropPath,
-                        adult,
-                        releaseDate
-                )
-        )
-    }
-
-    override fun describeContents(): Int = 0
+class Film {
 
     @SerializedName("vote_count")
     @Expose
@@ -86,27 +62,5 @@ class Film() : Parcelable {
     @Expose
     var releaseDate: String? = null
 
-    constructor(parcel: Parcel) : this() {
-        voteCount = parcel.readValue(Int::class.java.classLoader) as? Int
-        id = parcel.readValue(Int::class.java.classLoader) as? Int
-        video = parcel.readValue(Boolean::class.java.classLoader) as? Boolean
-        voteAverage = parcel.readValue(Double::class.java.classLoader) as? Double
-        title = parcel.readString()
-        popularity = parcel.readValue(Double::class.java.classLoader) as? Double
-        posterPath = parcel.readString()
-        originalLanguage = parcel.readString()
-        originalTitle = parcel.readString()
-        backdropPath = parcel.readString()
-        adult = parcel.readValue(Boolean::class.java.classLoader) as? Boolean
-        overview = parcel.readString()
-        releaseDate = parcel.readString()
-    }
-
-    companion object CREATOR : Parcelable.Creator<Film> {
-        override fun createFromParcel(parcel: Parcel): Film = Film(parcel)
-
-        override fun newArray(size: Int): Array<Film?> = arrayOfNulls(size)
-
-    }
 
 }
