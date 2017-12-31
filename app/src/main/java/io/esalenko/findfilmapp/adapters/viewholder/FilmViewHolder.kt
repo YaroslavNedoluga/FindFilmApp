@@ -10,6 +10,7 @@ import butterknife.OnClick
 import com.bumptech.glide.Glide
 import es.dmoral.toasty.Toasty
 import io.esalenko.findfilmapp.R
+import io.esalenko.findfilmapp.helper.ApiHelper
 import io.esalenko.findfilmapp.model.Film
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
@@ -26,13 +27,13 @@ class FilmViewHolder(itemView: View?, private val callback: FilmViewHolderComman
     lateinit var filmTitle: TextView
 
     @BindView(R.id.tv_item_film_card_description)
-    lateinit var filmOverwiew: TextView
+    lateinit var filmOverview: TextView
 
     @BindView(R.id.tv_item_film_card_release_year)
     lateinit var releaseYear: TextView
 
     @BindView(R.id.tv_item_film_card_average_vote)
-    lateinit var averagVote: TextView
+    lateinit var averageVote: TextView
 
     private lateinit var film: Film
 
@@ -43,25 +44,21 @@ class FilmViewHolder(itemView: View?, private val callback: FilmViewHolderComman
     fun bindView(film: Film) {
         this.film = film
 
-        val baseImageUrl = itemView.context.resources.getString(R.string.base_url_for_img)
-        val url = baseImageUrl + film.backdropPath
 
         with(this.film) {
-            if (url != null) {
-                Glide.with(itemView)
-                        .load(url)
-                        .into(posterImage)
-            } else {
-                posterImage.setImageResource(R.drawable.no_image_available)
-            }
+            val url = ApiHelper.baseImgUrl + film.backdropPath
+            Glide.with(itemView)
+                    .load(url)
+                    .into(posterImage)
+
             filmTitle.text = title ?: itemView.context.getString(R.string.error_title)
 
-            filmOverwiew.text = overview ?: itemView.context.getString(R.string.error_overview)
+            filmOverview.text = overview ?: itemView.context.getString(R.string.error_overview)
 
             val yearLength = 4
             releaseYear.text = releaseDate?.substring(0, yearLength) ?: "- - - -"
 
-            averagVote.text = voteAverage.toString()
+            averageVote.text = voteAverage.toString()
         }
     }
 
