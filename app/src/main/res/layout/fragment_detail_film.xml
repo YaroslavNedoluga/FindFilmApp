@@ -101,16 +101,11 @@
                 android:textStyle="bold"
                 tools:text="7.5" />
 
-            <TextView
-                android:id="@+id/tv_fragment_detail_film_genres"
-                style="@style/TextMedium"
-                android:layout_width="wrap_content"
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_fragment_detail_film_genres_list"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_movie_black_24px"
-                android:drawablePadding="@dimen/margin_small"
-                android:gravity="center"
-                android:textStyle="italic"
-                tools:text="Criminal | Comedy | Drama" />
+                tools:listitem="@layout/item_chips_genre" />
 
             <TextView
                 android:id="@+id/tv_fragment_detail_film_overview"
