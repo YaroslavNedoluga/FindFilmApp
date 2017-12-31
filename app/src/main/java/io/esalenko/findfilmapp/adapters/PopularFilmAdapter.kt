@@ -14,13 +14,12 @@ import java.util.*
 
 class PopularFilmAdapter(private val callback: FilmViewHolder.FilmViewHolderCommander) : RecyclerView.Adapter<FilmViewHolder>() {
 
-    private val list: ArrayList<Film>? = ArrayList<Film>()
+    private var list = ArrayList<Film>()
 
     fun setList(list: List<Film>?) {
-        if (this.list?.size == 0) {
-            this.list.addAll(list!!)
-        }
-        val diffResult: DiffUtil.DiffResult = DiffUtil.calculateDiff(FilmDiffUtilCallback(this.list!!, list!!))
+        val filmsDiffUtil = FilmDiffUtilCallback(this.list, list!!)
+        val diffResult = DiffUtil.calculateDiff(filmsDiffUtil)
+        this.list = list as ArrayList<Film>
         diffResult.dispatchUpdatesTo(this)
     }
 
@@ -31,11 +30,10 @@ class PopularFilmAdapter(private val callback: FilmViewHolder.FilmViewHolderComm
         return FilmViewHolder(view, callback)
     }
 
-    override fun getItemCount(): Int = list?.size ?: 0
+    override fun getItemCount(): Int = list.size
 
     override fun onBindViewHolder(holder: FilmViewHolder?, position: Int) {
-        val film: Film = list!![position]
-        holder?.bindView(film)
+        holder?.bindView(list[position])
     }
 
 }
