@@ -12,7 +12,7 @@ class RetrofitHelper {
     private lateinit var retrofit: Retrofit
     private val retrofitBuilder: Retrofit.Builder = Retrofit.Builder()
 
-    private val baseUrl: String = "https://api.themoviedb.org/3/"
+    private val baseUrl: String = ApiHelper.baseUrl
 
     fun getRetrofitInstance(): RestService? {
 
