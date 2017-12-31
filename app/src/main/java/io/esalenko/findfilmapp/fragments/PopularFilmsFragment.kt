@@ -68,7 +68,6 @@ class PopularFilmsFragment : BaseFragment()
         viewModel.loadPopularFilms(page, app.getCurrentLocale())
                 .observe(this, Observer { films ->
                     adapter.setList(films)
-                    adapter.notifyDataSetChanged()
                     info { "adapter.setList() called" }
                 })
     }
