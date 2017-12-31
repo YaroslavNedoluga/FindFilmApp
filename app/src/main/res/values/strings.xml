@@ -1,8 +1,5 @@
 <resources>
 
-    <string name="base_url">https://api.themoviedb.org/3/</string>
-    <string name="base_url_for_img">https://image.tmdb.org/t/p/w342</string>
-
     <string name="app_name">Project Achilles</string>
 
     <string name="test_film_description">Minions Stuart, Kevin and Bob are recruited by Scarlet Overkill, a super-villain who, alongside her inventor husband Herb, hatches a plot to take over the world.</string>
