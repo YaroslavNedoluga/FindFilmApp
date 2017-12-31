@@ -6,6 +6,7 @@ import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.content.res.Configuration
 import android.os.Bundle
+import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.StaggeredGridLayoutManager
@@ -36,6 +37,9 @@ class PopularFilmsFragment : BaseFragment()
     @BindView(R.id.rv_popular_films_list)
     lateinit var recyclerView: RecyclerView
 
+    @BindView(R.id.srl_fragment_popular_films)
+    lateinit var swipeRefreshLayout: SwipeRefreshLayout
+
     override fun onAttach(context: Context?) {
         super.onAttach(context)
         if (parentFragment is PopularFilmCommander) {
@@ -51,7 +55,6 @@ class PopularFilmsFragment : BaseFragment()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         info("onViewCreated()")
-
         adapter = PopularFilmAdapter(this)
         if (activity?.resources?.configuration?.orientation == Configuration.ORIENTATION_PORTRAIT) {
             recyclerView.layoutManager = LinearLayoutManager(context)
@@ -62,6 +65,15 @@ class PopularFilmsFragment : BaseFragment()
         recyclerView.adapter = this.adapter
         viewModel = ViewModelProviders.of(this).get(FilmsViewModel::class.java)
         subscribe()
+
+        swipeRefreshLayout.setOnRefreshListener {
+            swipeRefreshLayout.isRefreshing = true
+            if (page <= 1000) {
+                page++
+                subscribe()
+            }
+            swipeRefreshLayout.isRefreshing = false
+        }
     }
 
     private fun subscribe() {
@@ -79,6 +91,13 @@ class PopularFilmsFragment : BaseFragment()
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putInt(LAST_PAGE, page)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        if (savedInstanceState != null) {
+            page = savedInstanceState.getInt(LAST_PAGE)
+        }
     }
 
     interface PopularFilmCommander {
