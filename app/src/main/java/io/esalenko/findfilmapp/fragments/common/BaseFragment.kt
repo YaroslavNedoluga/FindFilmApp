@@ -1,4 +1,4 @@
-package io.esalenko.findfilmapp.common
+package io.esalenko.findfilmapp.fragments.common
 
 import android.os.Bundle
 import android.support.annotation.LayoutRes
