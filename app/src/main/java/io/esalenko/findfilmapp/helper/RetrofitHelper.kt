@@ -14,7 +14,7 @@ class RetrofitHelper {
 
     private val baseUrl: String = ApiHelper.baseUrl
 
-    fun getRetrofitInstance(): RestService? {
+    fun getRetrofitInstance(): RestService {
 
         val logging = HttpLoggingInterceptor()
         logging.level = HttpLoggingInterceptor.Level.BASIC
