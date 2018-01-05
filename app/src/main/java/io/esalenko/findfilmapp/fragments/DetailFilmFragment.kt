@@ -13,7 +13,7 @@ import com.bumptech.glide.Glide
 import io.esalenko.findfilmapp.R
 import io.esalenko.findfilmapp.activity.MainActivity
 import io.esalenko.findfilmapp.adapters.GenreChipsAdapter
-import io.esalenko.findfilmapp.common.BaseFragment
+import io.esalenko.findfilmapp.fragments.common.BaseFragment
 import io.esalenko.findfilmapp.helper.ApiHelper
 import io.esalenko.findfilmapp.model.DetailedFilm
 import io.esalenko.findfilmapp.viewmodel.FilmsViewModel

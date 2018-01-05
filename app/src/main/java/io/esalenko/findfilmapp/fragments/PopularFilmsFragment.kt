@@ -15,7 +15,7 @@ import butterknife.BindView
 import io.esalenko.findfilmapp.R
 import io.esalenko.findfilmapp.adapters.PopularFilmAdapter
 import io.esalenko.findfilmapp.adapters.viewholder.FilmViewHolder
-import io.esalenko.findfilmapp.common.BaseFragment
+import io.esalenko.findfilmapp.fragments.common.BaseFragment
 import io.esalenko.findfilmapp.viewmodel.FilmsViewModel
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
