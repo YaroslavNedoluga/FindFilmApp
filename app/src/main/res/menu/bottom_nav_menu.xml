@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_pop"
+        android:icon="@drawable/ic_movie_black_24px"
+        android:title="@string/menu_pop" />
+    <item
+        android:id="@+id/nav_random"
+        android:icon="@drawable/ic_info_outline_white_48dp"
+        android:title="@string/menu_random" />
+</menu>

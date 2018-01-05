@@ -9,4 +9,7 @@
     <string name="working_app_name">Project Achilles</string>
 
 
+    <string name="menu_pop">Popular Films</string>
+    <string name="menu_random">Random Film</string>
+
 </resources>
