@@ -20,4 +20,5 @@ interface RestService {
     fun getFilmByID(@Path("movie_id") id: Int,
                     @Query("api_key") api_key: String,
                     @Query("language") locale: String): Observable<DetailedFilm>
+
 }

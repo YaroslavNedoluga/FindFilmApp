@@ -3,6 +3,7 @@ package io.esalenko.findfilmapp
 import android.os.Build
 import android.support.multidex.MultiDexApplication
 import com.squareup.leakcanary.LeakCanary
+import io.esalenko.findfilmapp.service.RestManager
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import java.util.*
@@ -11,9 +12,12 @@ import java.util.*
 class App : MultiDexApplication(), AnkoLogger {
 
     private lateinit var locale: Locale
+    var restManager: RestManager? = null
+        private set
 
     override fun onCreate() {
         super.onCreate()
+        restManager = RestManager()
         // Leak Canary initialization
         if (LeakCanary.isInAnalyzerProcess(this)) return
         LeakCanary.install(this)
