@@ -32,7 +32,7 @@
         <item name="fontPath">fonts/PT_Sans-Narrow-Web-Regular.ttf</item>
         <item name="android:gravity">left</item>
         <item name="android:textColor">@color/md_grey_900</item>
-        <item name="android:textSize">@dimen/text_small</item>
+        <item name="android:textSize">@dimen/text_normal</item>
     </style>
 
     <style name="SplashTitle" parent="@style/Theme.AppCompat.NoActionBar">
