@@ -57,21 +57,20 @@
                     android:textStyle="bold"
                     tools:text="2017" />
 
-                <TextView
-                    android:id="@+id/tv_item_film_card_average_vote"
-                    style="@style/TextMedium"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="4"
-                    android:drawablePadding="@dimen/margin_small_xx"
-                    android:drawableRight="@drawable/ic_star_border_black_24px"
-                    android:gravity="right|center"
-                    android:textColor="@color/md_grey_800"
-                    android:textStyle="italic"
-                    tools:text="7.3" />
-
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/tv_item_film_card_average_vote"
+                style="@style/TextMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:drawablePadding="@dimen/margin_small_xx"
+                android:drawableRight="@drawable/ic_star_border_black_24px"
+                android:gravity="center"
+                android:textColor="@color/md_grey_800"
+                android:textStyle="bold"
+                tools:text="7.3" />
 
             <TextView
                 android:id="@+id/tv_item_film_card_description"
