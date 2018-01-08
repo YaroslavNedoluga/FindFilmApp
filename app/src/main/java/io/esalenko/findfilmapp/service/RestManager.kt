@@ -32,7 +32,6 @@ class RestManager {
     }
 
 
-    // TODO :: Unite two response to one Observable (Concat)
     fun getRandomFilm(locale: String): Observable<Film> {
         return restService
                 .getPopularFilms(ApiHelper.apiKey, locale, 1, ApiHelper.region)
